@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xe Khách Tuyến Rạch Giá - Sông Đốc | Vân Hiếu</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --dark-red: #a50000; /* Màu đỏ đô sang trọng */
+            --bright-red: #d32f2f;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+        }
+
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background-color: var(--white);
+            color: #333;
+            margin: 0;
+        }
+
+        h1, h2, h3, .navbar-brand { font-family: 'Montserrat', sans-serif; font-weight: 800; }
+
+        /* Navbar */
+        .navbar {
+            background: var(--white) !important;
+            padding: 10px 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            border-bottom: 4px solid var(--dark-red);
+        }
+        .navbar-brand { color: var(--dark-red) !important; font-size: 1.6rem; text-transform: uppercase; }
+        .hotline-top { color: var(--dark-red); font-weight: 800; font-size: 1.2rem; }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://th.bing.com/th/id/OIP.dGRwgs4zG75DId6JqB41-QHaD4?w=340&h=180&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3'); /* Bến xe Rạch Sỏi */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .hero h1 { font-size: clamp(1.8rem, 5vw, 3.5rem); text-transform: uppercase; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.5rem; color: #fff; font-weight: 500; }
+
+        /* Nút gọi xịn */
+        .btn-call {
+            background: var(--dark-red);
+            color: white !important;
+            padding: 15px 45px;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+            box-shadow: 0 5px 20px rgba(165, 0, 0, 0.4);
+            border: 2px solid transparent;
+        }
+        .btn-call:hover { background: white; color: var(--dark-red) !important; border-color: var(--dark-red); transform: translateY(-3px); }
+
+        /* Section Container */
+        .section-title {
+            text-align: center;
+            color: var(--dark-red);
+            margin: 50px 0 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--dark-red);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Image Cards */
+        .img-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background: white;
+            transition: 0.3s;
+            height: 100%;
+        }
+        .img-card:hover { transform: translateY(-10px); }
+        .img-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .img-card-body { padding: 20px; text-align: center; border-top: 3px solid var(--dark-red); }
+
+        /* Schedule Table */
+        .schedule-box {
+            background: var(--light-gray);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+        }
+        .table { background: white; border-radius: 15px; overflow: hidden; }
+        .table thead { background: var(--dark-red); color: white; }
+
+        /* Floating Call */
+        .call-now {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: #c0392b;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            text-decoration: none;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        footer {
+            background: var(--dark-red);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { height: 50vh; }
+            .btn-call { padding: 12px 30px; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-light sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-bus-alt me-2"></i> XE KHÁCH VÂN HIẾU
+            </a>
+            <div class="hotline-top d-none d-md-block">
+                <i class="fas fa-phone-volume me-2"></i> HOTLINE: 0917.666.131
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-box">
+                <p class="mb-0">DỊCH VỤ VẬN TẢI HÀNH KHÁCH</p>
+                <h1>TUYẾN RẠCH GIÁ - SÔNG ĐỐC</h1>
+                <p class="mb-4">An Toàn - Chất Lượng - Chu Đáo</p>
+                <a href="tel:0917666131" class="btn-call">
+                    GỌI ĐẶT VÉ: 0917.666.131
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="container my-5">
+        <h2 class="section-title">HÌNH ẢNH XE & ĐIỂM ĐẾN</h2>
+        <div class="row g-4 mt-2">
+            <div class="col-md-4">
+                <div class="img-card">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.49ZVY4H09mjYlg_heT2NLwHaEy?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Xe 16 chỗ Hyundai Solati">
+                    <div class="img-card-body">
+                        <h5 class="fw-bold">XE 16 CHỖ ĐỜI MỚI</h5>
+                        <p class="small text-muted">Hyundai Solati rộng rãi, máy lạnh êm ái.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="img-card">
+                    <img src="https://th.bing.com/th/id/OIP.qpyUwv_6OeaTtqzgKEa9qwHaFA?w=269&h=181&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3" alt="Điểm đến Sông Đốc">
+                    <div class="img-card-body">
+                        <h5 class="fw-bold">TUYẾN CỐ ĐỊNH</h5>
+                        <p class="small text-muted">Rạch Giá - Sông Đốc - Đưa đón tận nhà.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-5">
+        <div class="schedule-box">
+            <h3 class="text-center fw-bold mb-4" style="color: var(--dark-red);">THÔNG TIN LỊCH TRÌNH</h3>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle shadow-sm">
+                    <thead>
+                        <tr>
+                            <th>ĐIỂM ĐI</th>
+                            <th>ĐIỂM ĐẾN</th>
+                            <th>LOẠI XE</th>
+                            <th>ĐẶT VÉ XE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold">TP. Rạch Giá (BX Rạch Sỏi)</td>
+                            <td class="fw-bold">TT. Sông Đốc (Cà Mau)</td>
+                            <td>xe 16 Chỗ </td>
+                            <td class="text-danger fw-bold">Liên hệ ngay</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">TT. Sông Đốc (Cà Mau)</td>
+                            <td class="fw-bold">TP. Rạch Giá (BX Rạch Sỏi)</td>
+                            <td>xe 16 Chỗ </td>
+                            <td class="text-danger fw-bold">0917.666.131</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-center mt-3 text-muted italic"> * Lưu ý: Nhà xe có hỗ trợ đưa đón tận nhà trong nội ô Rạch Giá và Sông Đốc.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <h3 class="fw-bold mb-3">NHÀ XE VÂN HIẾU</h3>
+            <p class="mb-1">Văn phòng: TP. Rạch Giá - Kiên Giang</p>
+            <p class="mb-1">Hotline đặt vé: 0917.666.131 ( Huỳnh Văn Vân )</p>
+            <div class="mt-4">
+                <i class="fab fa-facebook me-3 fs-3"></i>
+                <i class="fab fa-zalo fs-3"></i>
+            </div>
+            <hr class="my-4" style="background: rgba(255,255,255,0.3);">
+            <p class="small mb-0">© 2026 Xe Khách Vân Hiếu.</p>
+        </div>
+    </footer>
+
+    <a href="tel:0917666131" class="call-now">
+        <i class="fas fa-phone-alt"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
